@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AgreementService } from 'src/app/agreement.service';
 
 @Component({
   selector: 'app-ivb',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IvbComponent implements OnInit {
 
-  constructor() { }
+  constructor( private agreementService: AgreementService) { }
 
   ngOnInit(): void {
+    this.agreementService.getProduct().subscribe()
   }
 
 }
