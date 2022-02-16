@@ -15,16 +15,12 @@ const routes: Routes = [
   },
   {
     path: 'summary-rzb',
-    component: SummaryRzbComponent
+    loadChildren: () =>  import('./modules/rzb/rzb.module').then(m => m.RzbModule)
   },
-  {
-    path: 'summary-ivb',
-    component: SummaryIvbComponent
+  { path: 'summary-ivb',
+   loadChildren: () => import('./modules/ivb/ivb.module').then(m => m.IvbModule)
   },
-  {
-    path: 'summary-rbb',
-    component: SummaryRbbComponent
-  },
+  { path: 'summary-rbb', loadChildren: () => import('./modules/rbb/rbb.module').then(m => m.RbbModule) },
   {
     path:'',
     component: HomeComponent

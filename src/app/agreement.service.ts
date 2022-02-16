@@ -10,6 +10,6 @@ export class AgreementService {
   constructor() { }
 
   getProduct(): Observable<string> {
-    return of('rzb').pipe(delay(500))
+    return of('ivb').pipe(delay(500))
   }
 }
