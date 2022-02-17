@@ -11,7 +11,7 @@ export class IvbComponent implements OnInit {
   constructor( private agreementService: AgreementService) { }
 
   ngOnInit(): void {
-    this.agreementService.getProduct().subscribe()
+   this.agreementService.getProduct().subscribe()
   }
 
 }

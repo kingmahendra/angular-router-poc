@@ -32,6 +32,20 @@ function routesFactory(agreementService: AgreementService): Routes {
       },
     },
     {
+      loadChildren: () => import('../rbb/rbb.module').then((m) => m.RbbModule),
+      matcher: (url: UrlSegment[]): UrlMatchResult | null => {
+        if (url.length !== 0) {
+          return null;
+        }
+
+        if (agreementService.productCode$.value === 'rbb') {
+          return { consumed: url };
+        }
+
+        return null;
+      },
+    },
+    {
       // loadChildren: () => import('./ivb.module').then(m => m.IvbModule),
       component: SummaryIvbComponent,
       matcher: (url: UrlSegment[]): UrlMatchResult | null => {

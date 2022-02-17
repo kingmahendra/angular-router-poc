@@ -15,17 +15,9 @@ export class AgreementObserverService implements OnDestroy {
         .agreementService
         .productCode$
         .pipe(skip(1))
-        .subscribe((value) => {
-            console.log('product code ---', value);
+        .subscribe(() => {
            
-            // if(value === 'ivb') {
-            //     this.agreementService.isIVB = true;
-            //     this.agreementService.isRZB = false;
-            // }else if(value === 'rzb') {
-            //     this.agreementService.isRZB = true;
-            //     this.agreementService.isIVB = false;
-            // }
-            if (this.router.url !== '/') {
+            if (this.router.url !== '/summary') {
                 return;
             }
 
