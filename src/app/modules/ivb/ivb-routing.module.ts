@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, ROUTES, Routes, UrlMatchResult, UrlSegment } from '@angular/router';
+import {
+  RouterModule,
+  ROUTES,
+  Routes,
+  UrlMatchResult,
+  UrlSegment,
+} from '@angular/router';
 import { AgreementObserverService } from 'src/app/agreement-observer.service';
 import { AgreementService } from 'src/app/agreement.service';
 import { SummaryIvbComponent } from 'src/app/summary-ivb/summary-ivb.component';
@@ -9,54 +15,54 @@ import { IvbComponent } from './ivb.component';
 // const routes: Routes = [{ path: '', component: IvbComponent }];
 
 function routesFactory(agreementService: AgreementService): Routes {
+  // agreementService.getProduct().subscribe();
   return [
-      {
-        loadChildren: ()=> import('../rzb/rzb.module').then(m => m.RzbModule),
-          matcher: (url: UrlSegment[]): UrlMatchResult | null => {
-              if (url.length !== 0) {
-                  return null;
-              }
+    {
+      loadChildren: () => import('../rzb/rzb.module').then((m) => m.RzbModule),
+      matcher: (url: UrlSegment[]): UrlMatchResult | null => {
+        if (url.length !== 0) {
+          return null;
+        }
 
-              if (agreementService.isRZB) {
-                return { consumed: url };
-              }
+        if (agreementService.productCode$.value === 'rzb') {
+          return { consumed: url };
+        }
 
-              return null;
-          }
+        return null;
       },
-      {
-        // loadChildren: () => import('./ivb.module').then(m => m.IvbModule),
-        component: SummaryIvbComponent,
-          matcher: (url: UrlSegment[]): UrlMatchResult | null => {
-              if (url.length !== 0) {
-                  return null;
-              }
+    },
+    {
+      // loadChildren: () => import('./ivb.module').then(m => m.IvbModule),
+      component: SummaryIvbComponent,
+      matcher: (url: UrlSegment[]): UrlMatchResult | null => {
+        if (url.length !== 0) {
+          return null;
+        }
 
-              if (agreementService.isIVB) {
-                  return { consumed: url };
-              }
+        if (agreementService.productCode$.value === 'ivb') {
+          return { consumed: url };
+        }
 
-              return null;
-          }
+        return null;
       },
-      {
-        path: '',
-        component: IvbComponent
-      }
-  ]
+    },
+    {
+      path: '',
+      component: IvbComponent,
+    },
+  ];
 }
 
 @NgModule({
   exports: [RouterModule],
   providers: [
     {
-        provide: ROUTES,
-        useFactory: routesFactory,
-        multi: true,
-        deps: [AgreementService, AgreementObserverService],
-
+      provide: ROUTES,
+      useFactory: routesFactory,
+      multi: true,
+      deps: [AgreementService, AgreementObserverService],
     },
-    AgreementObserverService
-  ]
+    AgreementObserverService,
+  ],
 })
-export class IvbRoutingModule { }
+export class IvbRoutingModule {}

@@ -4,9 +4,7 @@ import { Observable, of, Subscription } from 'rxjs';
 import { delay, skip } from 'rxjs/operators';
 import { AgreementService } from './agreement.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AgreementObserverService implements OnDestroy {
     constructor(
         private agreementService: AgreementService,
@@ -19,14 +17,14 @@ export class AgreementObserverService implements OnDestroy {
         .pipe(skip(1))
         .subscribe((value) => {
             console.log('product code ---', value);
-            //this.agreementService.productCode$.next(value);
-            if(value === 'ivb') {
-                this.agreementService.isIVB = true;
-                this.agreementService.isRZB = false;
-            }else if(value === 'rzb') {
-                this.agreementService.isRZB = true;
-                this.agreementService.isIVB = false;
-            }
+           
+            // if(value === 'ivb') {
+            //     this.agreementService.isIVB = true;
+            //     this.agreementService.isRZB = false;
+            // }else if(value === 'rzb') {
+            //     this.agreementService.isRZB = true;
+            //     this.agreementService.isIVB = false;
+            // }
             if (this.router.url !== '/') {
                 return;
             }

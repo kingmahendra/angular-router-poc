@@ -12,11 +12,11 @@ export class AgreementService {
   isRZB!:boolean;
   isIVB!: boolean;
 
-  productCode$ :BehaviorSubject<string> =new BehaviorSubject<string>('ivb')
+  productCode$ :BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   getProduct(): Observable<string> {
-    return of('rzb').pipe(
-      delay(500),
-      tap(product=> this.productCode$.next(product) ))
+    return of('ivb').pipe(
+      tap(product => this.productCode$.next(product) ),
+      delay(500))
   }
 }
