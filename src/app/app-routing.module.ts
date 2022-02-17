@@ -15,18 +15,20 @@ const routes: Routes = [
   //   component: SummaryComponent,
   //   canActivate:[SummaryGuard]
   // },
-  {
-    path: 'summary-rzb',
-    loadChildren: () =>  import('./modules/rzb/rzb.module').then(m => m.RzbModule)
-  },
-  { path: 'summary',
-   loadChildren: () => import('./modules/ivb/ivb.module').then(m => m.IvbModule)
-  },
-  { path: 'summary-rbb', loadChildren: () => import('./modules/rbb/rbb.module').then(m => m.RbbModule) },
+  { path: 'flow-manager', loadChildren: () => import('./modules/flow-manager/flow-manager.module').then(m => m.FlowManagerModule) },
+  // {
+  //   path: 'summary-rzb',
+  //   loadChildren: () =>  import('./modules/rzb/rzb.module').then(m => m.RzbModule)
+  // },
+  // { path: 'summary',
+  //  loadChildren: () => import('./modules/ivb/ivb.module').then(m => m.IvbModule)
+  // },
+  // { path: 'summary-rbb', loadChildren: () => import('./modules/rbb/rbb.module').then(m => m.RbbModule) },
   {
     path:'',
     component: HomeComponent
-  }
+  },
+  
 ];
 
 

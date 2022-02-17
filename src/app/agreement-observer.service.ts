@@ -17,7 +17,7 @@ export class AgreementObserverService implements OnDestroy {
         .pipe(skip(1))
         .subscribe(() => {
            
-            if (this.router.url !== '/summary') {
+            if (this.router.url !== '/flow-manager') {
                 return;
             }
 
