@@ -12,7 +12,7 @@ export class AgreementService {
   productCode$ :BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   getProduct(): Observable<string> {
-    return of('ivb').pipe(
+    return of('rbb').pipe(
       delay(500),
       tap(product => this.productCode$.next(product) )
       )
