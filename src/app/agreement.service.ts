@@ -12,7 +12,8 @@ export class AgreementService {
   productCode$ :BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   getProduct(): Observable<string> {
-    return of('rbb').pipe(
+    console.log('Mocking API call')
+    return of('rzb').pipe(
       delay(500),
       tap(product => this.productCode$.next(product) )
       )
